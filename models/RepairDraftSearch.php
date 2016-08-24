@@ -1,13 +1,13 @@
 <?php
 
-namespace backend\modules\repair\models;
+namespace culturePnPsu\repair\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * RepairSearch represents the model behind the search form about `backend\modules\repair\models\Repair`.
+ * RepairSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
  */
 class RepairDraftSearch extends Repair {
 

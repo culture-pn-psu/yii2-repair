@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\repair\models\RequestSearch */
+/* @var $model culturePnPsu\repair\models\RequestSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

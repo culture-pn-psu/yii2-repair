@@ -1,10 +1,10 @@
 <?php
 
-namespace backend\modules\repair\controllers;
+namespace culturePnPsu\repair\controllers;
 
 use Yii;
-use backend\modules\repair\models\Repair;
-use backend\modules\repair\models\RepairingSearch;
+use culturePnPsu\repair\models\Repair;
+use culturePnPsu\repair\models\RepairingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

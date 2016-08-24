@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\modules\repair\models;
+namespace culturePnPsu\repair\models;
 
 use Yii;
 

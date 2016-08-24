@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\repair\models\Repair */
+/* @var $model culturePnPsu\repair\models\Repair */
 
 $this->title = Yii::t('repair', 'Create Repair');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('repair', 'Repairs'), 'url' => ['index']];

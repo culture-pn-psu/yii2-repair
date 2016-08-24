@@ -1,13 +1,13 @@
 <?php
 
-namespace backend\modules\repair\controllers;
+namespace culturePnPsu\repair\controllers;
 
 use Yii;
-use backend\modules\repair\models\Repair;
-use backend\modules\repair\models\RepairSearch;
-use backend\modules\repair\models\RepairDraftSearch;
-use backend\modules\repair\models\RepairingSearchAllstaff;
-use backend\modules\repair\models\RepairDoneSearchAllstaff;
+use culturePnPsu\repair\models\Repair;
+use culturePnPsu\repair\models\RepairSearch;
+use culturePnPsu\repair\models\RepairDraftSearch;
+use culturePnPsu\repair\models\RepairingSearchAllstaff;
+use culturePnPsu\repair\models\RepairDoneSearchAllstaff;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

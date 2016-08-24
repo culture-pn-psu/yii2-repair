@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\repair\models\RepairStaffSearch */
+/* @var $searchModel culturePnPsu\repair\models\RepairStaffSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('repair', 'รายการซ่อมทั้งหมด');

@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
-use backend\modules\repair\models\Repair;
+use culturePnPsu\repair\models\Repair;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\material\models\RepairProcess */
