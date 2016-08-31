@@ -3,12 +3,16 @@
 namespace culturePnPsu\repair\controllers;
 
 use Yii;
-use culturePnPsu\repair\models\Repair;
-use culturePnPsu\repair\models\ComSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+
+use culturePnPsu\repair\models\Repair;
+use culturePnPsu\repair\models\ComIndexSearch;
+use culturePnPsu\repair\models\ComConsiderSearch;
+use culturePnPsu\repair\models\ComRepairingSearch;
+use culturePnPsu\repair\models\ComDoneSearch;
 
 /**
  * ComController implements the CRUD actions for Repair model.
@@ -31,10 +35,40 @@ class ComController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new ComSearch();
+        $searchModel = new ComIndexSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionRepairing() {
+        $searchModel = new ComRepairingSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        return $this->render('repairing', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    
+    public function actionDone() {
+        $searchModel = new ComDoneSearch();
+        $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('done', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    public function actionConsider() {
+        $searchModel = new ComConsiderSearch();
+        $queryParams = array_merge(array(),Yii::$app->request->getQueryParams());
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('consider', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);
@@ -52,7 +86,7 @@ class ComController extends Controller {
             if ($model->staff_status == 1) { //ซ่อมเอง
                 $model->status = 6; //ซ่อมแล้ว
             } elseif ($model->staff_status == 2) { //ส่งร้าน
-                $model->status = 2; //ดำเนินการซ่อม
+                $model->status = 5; //ดำเนินการซ่อม
             }
             $model->staff_at = time();
             if ($model->save()) {

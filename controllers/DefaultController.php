@@ -3,16 +3,22 @@
 namespace culturePnPsu\repair\controllers;
 
 use Yii;
+//use yii\data\ActiveDataProvider;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
+
 use culturePnPsu\repair\models\Repair;
 use culturePnPsu\repair\models\RepairSearch;
 use culturePnPsu\repair\models\RepairDraftSearch;
 use culturePnPsu\repair\models\RepairingSearchAllstaff;
 use culturePnPsu\repair\models\RepairDoneSearchAllstaff;
-use yii\data\ActiveDataProvider;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
-use backend\modules\material\models\Material;
+use culturePnPsu\repair\models\RepairOfferSearch;
+use culturePnPsu\material\models\Material;
+
+use culturePnPsu\repair\models\DefaultIndexSearch;
+use culturePnPsu\repair\models\DefaultDraftSearch;
+use culturePnPsu\repair\models\DefaultOfferSearch;
 
 /**
  * DefaultController implements the CRUD actions for Repair model.
@@ -35,7 +41,7 @@ class DefaultController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new RepairSearch();
+        $searchModel = new DefaultIndexSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +51,7 @@ class DefaultController extends Controller {
     }
     
     public function actionDraft() {
-        $searchModel = new RepairDraftSearch();
+        $searchModel = new DefaultDraftSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('draft', [
@@ -205,7 +211,7 @@ class DefaultController extends Controller {
     public function chkTb($modelName, $post, $id, $title) {
         $val='';
         switch ($modelName) {
-            case 'backend\modules\material\models\Material':                
+            case 'culturePnPsu\material\models\Material':                
                 $ch_id = $post['Repair'][$id];
                 $ch_title = $post['Material']['title'];
                 $val=$post['Repair'];
@@ -226,7 +232,7 @@ class DefaultController extends Controller {
 //                echo $modelName;
 //                exit();
                 switch ($modelName) {
-                    case 'backend\modules\material\models\Material':
+                    case 'culturePnPsu\material\models\Material':
                         $model->id = $ch_id;
                         $model->title = $ch_title;
                         //$model->brand = $val['material_brand'];
@@ -243,6 +249,18 @@ class DefaultController extends Controller {
                 return $model->id;
             }
         }
+    }
+    
+    
+    public function actionOffer(){
+        $searchModel = new DefaultOfferSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+        
     }
 
 }

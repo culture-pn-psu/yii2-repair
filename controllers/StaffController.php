@@ -3,11 +3,16 @@
 namespace culturePnPsu\repair\controllers;
 
 use Yii;
-use culturePnPsu\repair\models\Repair;
-use culturePnPsu\repair\models\RepairStaffSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use culturePnPsu\repair\models\Repair;
+use culturePnPsu\repair\models\RepairStaffSearch;
+use culturePnPsu\repair\models\StaffIndexSearch;
+use culturePnPsu\repair\models\StaffConsiderSearch;
+use culturePnPsu\repair\models\StaffRepairingSearch;
+use culturePnPsu\repair\models\StaffDoneSearch;
 
 /**
  * StaffController implements the CRUD actions for Repair model.
@@ -33,7 +38,7 @@ class StaffController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new RepairStaffSearch();
+        $searchModel = new StaffIndexSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -48,22 +53,34 @@ class StaffController extends Controller {
      * @return mixed
      */
     public function actionView($id) {
+        
+        $model = $this->findModel($id);        
+      
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'model' => $model,
+        ]);
+    }
+    
+    
+    public function actionAssign($id) {
+        
+        $model = $this->findModel($id);
+        
+        if($model->load(Yii::$app->request->post())){
+            $model->status = 2;
+            $model->staffMaterial_id = Yii::$app->user->id;
+            if($model->save()){
+                Yii::$app->session->setFlash('sussess','บันทึกแล้ว');
+                return $this->redirect(['view','id'=>$model->id]);
+            }
+            
+        }
+        return $this->render('assign', [
+                    'model' => $model,
         ]);
     }
 
-    /**
-     * Deletes an existing Repair model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id) {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
+   
 
     /**
      * Finds the Repair model based on its primary key value.
@@ -80,10 +97,46 @@ class StaffController extends Controller {
         }
     }
 
-    public function actionPrint($id) {
-        $this->layout = 'print';
-        return $this->render('view', [
-                    'model' => $this->findModel($id),
+   
+    /**
+     * Lists all Repair models.
+     * @return mixed
+     */
+    public function actionConsider() {
+        $searchModel = new StaffConsiderSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+   
+    /**
+     * Lists all Repair models.
+     * @return mixed
+     */
+    public function actionRepairing() {
+        $searchModel = new StaffRepairingSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('repairing', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
+    
+    /**
+     * Lists all Repair models.
+     * @return mixed
+     */
+    public function actionDone() {
+        $searchModel = new StaffDoneSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('done', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
