@@ -10,7 +10,7 @@ use culturePnPsu\repair\models\Repair;
 /**
  * RepairStaffSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
  */
-class RepairStaffSearch extends Repair
+class StaffSearch extends Repair
 {
     /**
      * @inheritdoc

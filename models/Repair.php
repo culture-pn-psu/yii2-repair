@@ -5,7 +5,7 @@ namespace culturePnPsu\repair\models;
 use Yii;
 use yii\helpers\ArrayHelper;
 use common\models\User;
-use backend\modules\material\models\Material;
+use culturePnPsu\material\models\Material;
 
 /**
  * This is the model class for table "repair".
@@ -91,7 +91,7 @@ class Repair extends \yii\db\ActiveRecord {
             'updated_at' => Yii::t('person', 'แก้ไขเมื่อ'),
             'updated_by' => Yii::t('person', 'แก้ไขโดย'),
             'inform_at' => Yii::t('person', 'แจ้งเมื่อ'),
-            'inform_by' => Yii::t('person', 'แจ้งโดย'),
+            'inform_by' => Yii::t('person', 'ผู้แจ้งซ่อม'),
             'staffMaterial_id' => Yii::t('person', 'เจ้าหน้าที่พัสดุ'),
             'staffMaterial_at' => Yii::t('person', 'เมื่อ'),
             'staff_id' => Yii::t('person', 'เจ้าหน้าที่ซ่อม'),
@@ -235,8 +235,7 @@ class Repair extends \yii\db\ActiveRecord {
     }
 
     public function getInformBy() {
-        $model = $this->hasOne(User::className(), ['id' => 'created_by']);
-        return isset($model->id) ? $model->id : NULL;
+        return $this->hasOne(User::className(), ['id' => 'created_by']);        
     }
 
     public function getCreatedBy() {
@@ -274,5 +273,18 @@ class Repair extends \yii\db\ActiveRecord {
     public function getStaffMaterial() {
         return $this->hasOne(User::className(), ['id' => 'staffMaterial_id']);
     }
+    
+    ###############################
+    
+    
+    public function getAdminFullname() {
+        //echo $this->admin_id;
+        //exit();
+         return $this->admin_id?$this->admin->person->fullname:null;    }
+    
+    public function getStaffMaterialFullname() {
+        return $this->staffMaterial_id?$this->staffMaterial->person->fullname:null;
+    }
+
 
 }

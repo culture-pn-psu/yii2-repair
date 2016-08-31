@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use culturePnPsu\repair\models\Repair;
 
 /**
- * RepairStaffSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
+ * RepairOfferSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
  */
-class RepairStaffSearch extends Repair
+class RepairOfferSearch extends Repair
 {
     /**
      * @inheritdoc
@@ -49,7 +49,7 @@ class RepairStaffSearch extends Repair
             'query' => $query,
         ]);
         
-        $query->where(['status'=>1]);
+        $query->where(['status'=>1,'created_by'=>Yii::$app->user->id]);
 
         $this->load($params);
 

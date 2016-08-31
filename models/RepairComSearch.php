@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use culturePnPsu\repair\models\Repair;
 
 /**
- * RepairComSearch represents the model behind the search form about `backend\modules\material\models\Repair`.
+ * RepairComSearch represents the model behind the search form about `culturePnPsu\material\models\Repair`.
  */
 class RepairComSearch extends Repair
 {

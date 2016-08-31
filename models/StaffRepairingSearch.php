@@ -2,35 +2,12 @@
 
 namespace culturePnPsu\repair\models;
 
-use Yii;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use culturePnPsu\repair\models\Repair;
 
 /**
  * RepairStaffSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
  */
-class RepairStaffSearch extends Repair
-{
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['id', 'status', 'type', 'created_at', 'created_by', 'updated_at', 'updated_by', 'inform_at', 'inform_by', 'staffMaterial_id', 'staffMaterial_at', 'staff_id', 'staff_status', 'staff_at', 'boss_id', 'boss_status', 'boss_at', 'admin_id', 'admin_status', 'admin_at', 'repair_at', 'returned_at'], 'integer'],
-            [['material_id', 'problem', 'solving', 'staff_comment', 'boss_comment', 'admin_comment'], 'safe'],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+class StaffRepairingSearch extends StaffSearch {
 
     /**
      * Creates data provider instance with search query applied
@@ -39,8 +16,7 @@ class RepairStaffSearch extends Repair
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Repair::find();
 
         // add conditions that should always apply here
@@ -48,8 +24,8 @@ class RepairStaffSearch extends Repair
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-        
-        $query->where(['status'=>1]);
+
+        $query->where(['status' => 5]);
 
         $this->load($params);
 
@@ -86,12 +62,13 @@ class RepairStaffSearch extends Repair
         ]);
 
         $query->andFilterWhere(['like', 'material_id', $this->material_id])
-            ->andFilterWhere(['like', 'problem', $this->problem])
-            ->andFilterWhere(['like', 'solving', $this->solving])
-            ->andFilterWhere(['like', 'staff_comment', $this->staff_comment])
-            ->andFilterWhere(['like', 'boss_comment', $this->boss_comment])
-            ->andFilterWhere(['like', 'admin_comment', $this->admin_comment]);
+                ->andFilterWhere(['like', 'problem', $this->problem])
+                ->andFilterWhere(['like', 'solving', $this->solving])
+                ->andFilterWhere(['like', 'staff_comment', $this->staff_comment])
+                ->andFilterWhere(['like', 'boss_comment', $this->boss_comment])
+                ->andFilterWhere(['like', 'admin_comment', $this->admin_comment]);
 
         return $dataProvider;
     }
+
 }

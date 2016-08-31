@@ -3,31 +3,12 @@
 namespace culturePnPsu\repair\models;
 
 use Yii;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
  * RepairSearch represents the model behind the search form about `culturePnPsu\repair\models\Repair`.
  */
-class RepairSearch extends Repair {
-
-    /**
-     * @inheritdoc
-     */
-    public function rules() {
-        return [
-            [['status', 'created_at', 'inform_at', 'inform_by', 'staff_id', 'admin_id'], 'integer'],
-            [['id', 'material_id', 'problem'], 'safe'],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function scenarios() {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
+class DefaultDraftSearch extends RepairSearch {
 
     /**
      * Creates data provider instance with search query applied
@@ -43,17 +24,11 @@ class RepairSearch extends Repair {
             'query' => $query,
         ]);
 
-        //$where=[];
-        //if (Yii::$app->user->can('AllStaff')) {
-        //echo Yii::$app->user->id;
-        //$where['created_by']=Yii::$app->user->id;
-        //}     
-//        print_r($where);
-//        exit();
-        //$query->where(['created_by' => Yii::$app->user->id]);
-//        if (Yii::$app->user->can('staffMaterial')) {
-//            $query->orWhere(['status'=>[1,2,3]]);
-//        }
+        $query->where([
+            'created_by' => Yii::$app->user->id,
+            'status' => 0
+        ]);
+
 
         $this->load($params);
 
