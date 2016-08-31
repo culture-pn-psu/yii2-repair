@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'id',
                         'format' => 'html',
                         'value' => function($model) {
-                            return Html::a('<i class="fa fa-info-circle"></i> ' . Html::tag('b', $model->id), ['view', 'id' => $model->id]);
+                            return Html::a('<i class="fa fa-info-circle"></i> ' . Html::tag('b', $model->id), ['assign', 'id' => $model->id]);
                         },
                             ],
                             [
@@ -45,13 +45,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     //'type',
                                     [
                                         'attribute' => 'type',
-                                        'filter' => \backend\modules\material\models\Repair::getItemType(),
+                                        'filter' => \culturePnPsu\repair\models\Repair::getItemType(),
                                         'format' => 'html',
                                         'value' => 'TypeLabel'
                                     ],
 //                                    [
 //                                        'attribute' => 'status',
-//                                        'filter' => \backend\modules\material\models\Repair::getItemStatus(),
+//                                        'filter' => \culturePnPsu\repair\models\Repair::getItemStatus(),
 //                                        'format' => 'html',
 //                                        'value' => 'statusLabel'
 //                                    ],

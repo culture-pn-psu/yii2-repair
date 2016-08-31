@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\BaseStringHelper;
+//use yii\helpers\BaseStringHelper;
+use culturePnPsu\repair\components\Navigate;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -33,7 +34,7 @@ $controller = $this->context;
             <div class="box-body no-padding">
 
                 <?php
-                $nav = new common\models\Navigate();
+                $nav = new Navigate();
                 echo dmstr\widgets\Menu::widget([
                     'options' => ['class' => 'nav nav-pills nav-stacked'],
                     //'linkTemplate' =>'<a href="{url}">{icon} {label} {badge}</a>',
@@ -46,9 +47,7 @@ $controller = $this->context;
         </div>
 
         <?php
-        if (Yii::$app->user->can('staffIt') ||
-                Yii::$app->user->can('staffMaterial')
-        ):
+        if (Yii::$app->user->can('staffMaterial')):
             ?>
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -64,7 +63,7 @@ $controller = $this->context;
                 <div class="box-body no-padding">
 
                     <?php
-                    $nav = new common\models\Navigate();
+                    $nav = new Navigate();
                     echo dmstr\widgets\Menu::widget([
                         'options' => ['class' => 'nav nav-pills nav-stacked'],
                         //'linkTemplate' =>'<a href="{url}">{icon} {label} {badge}</a>',
@@ -78,11 +77,11 @@ $controller = $this->context;
             <!-- /. box -->
         <?php endif; ?>
 
-<?php /* if (Yii::$app->user->can('headSupport')): ?>
+<?php  if (Yii::$app->user->can('staffIt')): ?>
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">
-                        สำหรับหัวหน้า
+                        สำหรับเจ้าหน้าที่คอม
                     </h3>
 
                     <div class="box-tools">
@@ -93,7 +92,7 @@ $controller = $this->context;
                 <div class="box-body no-padding">
 
                     <?php
-                    $nav = new common\models\Navigate();
+                    $nav = new Navigate();
                     echo dmstr\widgets\Menu::widget([
                         'options' => ['class' => 'nav nav-pills nav-stacked'],
                         //'linkTemplate' =>'<a href="{url}">{icon} {label} {badge}</a>',
@@ -107,7 +106,7 @@ $controller = $this->context;
             <!-- /. box -->
 <?php endif; ?>
 
-<?php if (Yii::$app->user->can('director')): ?>
+<?php /*if (Yii::$app->user->can('director')): ?>
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">

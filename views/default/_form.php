@@ -3,17 +3,17 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 //use yii\widgets\ActiveForm;
-use yii\widgets\MaskedInput;
-use backend\modules\material\models\Material;
+//use yii\widgets\MaskedInput;
+//use culturePnPsu\material\models\Material;
 use yii\web\JsExpression;
 use yii\bootstrap\Modal;
-use backend\modules\material\models\Repair;
+use culturePnPsu\repair\models\Repair;
 
 use dosamigos\ckeditor\CKEditor;
 use kartik\form\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\material\models\Repair */
+/* @var $model culturePnPsu\material\models\Repair */
 /* @var $form yii\widgets\ActiveForm */
 use kartik\widgets\Typeahead;
 use common\models\User;

@@ -6,7 +6,7 @@ use kartik\widgets\DatePicker;
 use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\material\models\RepairSearch */
+/* @var $searchModel culturePnPsu\material\models\RepairSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('repair', 'รายการแจ้งซ่อมทั้งหมด');
@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'problem:html',
                             [
                                 'attribute' => 'status',
-                                'filter' => \backend\modules\material\models\Repair::getItemStatus(),
+                                'filter' => \culturePnPsu\repair\models\Repair::getItemStatus(),
                                 'format' => 'html',
                                 'value' => 'statusLabel'
                             ],

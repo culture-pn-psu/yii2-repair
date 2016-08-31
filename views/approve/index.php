@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\material\models\RepairedSearch */
+/* @var $searchModel culturePnPsu\material\models\RepairedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('person', 'รายการพิจารณาการซ่อม');
@@ -45,13 +45,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                 //'type',
 //                        [
 //                            'attribute' => 'type',
-//                            'filter' => \backend\modules\material\models\Repair::getItemType(),
+//                            'filter' => \culturePnPsu\repair\models\Repair::getItemType(),
 //                            'format' => 'html',
 //                            'value' => 'TypeLabel'
 //                        ],
 //                                [
 //                                    'attribute' => 'status',
-//                                    'filter' => \backend\modules\material\models\Repair::getItemStatus(),
+//                                    'filter' => \culturePnPsu\repair\models\Repair::getItemStatus(),
 //                                    'format' => 'html',
 //                                    'value' => 'statusLabel'
 //                                ],

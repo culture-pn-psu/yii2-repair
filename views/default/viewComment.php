@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-
+echo $model->status;
 if (isset($model->staffMaterial_id) && $model->status > 1):
     ?>
 
@@ -30,7 +30,6 @@ endif;
 
 
 <?php if ($model->staff_status): ?>
-
 
     <div class="box box-widget">
         <div class="box-header with-border">

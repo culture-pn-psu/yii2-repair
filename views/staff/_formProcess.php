@@ -2,10 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\modules\material\models\Repair;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\material\models\RepairProcess */
+/* @var $model culturePnPsu\material\models\RepairProcess */
 /* @var $form yii\widgets\ActiveForm */
 use common\models\User;
 
@@ -13,7 +12,7 @@ use common\models\User;
 //print_r(User::findByRole('admin'));
 //exit();
 ?> 
-<div class="box box-widget">
+<div class="box box-widget hidden-print">
     <div class="box-header with-border">
         <i class="fa fa-check-square-o"></i> เลือกเจ้าหน้า หัวหน้า และผู้บริหารในการออกความคิดเห็น
     </div>

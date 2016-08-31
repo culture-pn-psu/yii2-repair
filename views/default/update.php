@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\material\models\Repair */
+/* @var $model culturePnPsu\material\models\Repair */
 
 $this->title = Yii::t('app', 'แจ้งซ่อมครุภัณฑ์ {modelClass}: ', [
             'modelClass' => 'Repair',

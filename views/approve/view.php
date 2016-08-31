@@ -6,12 +6,12 @@ use yii\widgets\ActiveForm;
 use culturePnPsu\repair\models\Repair;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\material\models\RepairProcess */
+/* @var $model culturePnPsu\material\models\RepairProcess */
 /* @var $form yii\widgets\ActiveForm */
 use common\models\User;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\material\models\Repair */
+/* @var $model culturePnPsu\material\models\Repair */
 
 $this->title = $model->material_id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('person', 'รายการแจ้งซ่อม'), 'url' => ['index']];

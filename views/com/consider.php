@@ -7,12 +7,12 @@ use yii\grid\GridView;
 /* @var $searchModel culturePnPsu\material\models\RepairedSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('person', 'รายการแจ้งซ่อม');
+$this->title = Yii::t('repair', 'รายการพิจารณาแจ้งซ่อมคอมฯ');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class='box box-info'>
     <div class='box-header'>
-     <!-- <h3 class='box-title'><?= Html::encode($this->title) ?></h3>-->
+      <h3 class='box-title'><?= Html::encode($this->title) ?></h3>
     </div><!--box-header -->
 
     <div class='box-body pad'>
