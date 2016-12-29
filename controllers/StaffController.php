@@ -106,7 +106,7 @@ class StaffController extends Controller {
         $searchModel = new StaffConsiderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
+        return $this->render('consider', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
         ]);

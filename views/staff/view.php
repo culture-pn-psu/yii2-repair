@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -12,21 +13,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class='box-header hidden-print'>
         <h3 class='box-title'><?= Html::encode($this->title) ?></h3>
     </div><!--box-header -->    
-    <?=$this->render('_view',['model'=>$model]) ?>    
+
+    <div class='box-body pad'>
+        <?= $this->render('_view', ['model' => $model]) ?> 
+    </div><!--box-body pad-->
 </div><!--box box-info-->
 
-<?=
-$this->render('viewComment', [
-    'model' => $model
-]);
-?>
+<?php /* =
+  $this->render('viewComment', [
+  'model' => $model
+  ]);
+  ?>
 
-<?php
-        if (Yii::$app->user->can('staffMaterial')) {
-            if ($model->status == 1) {
-                echo $this->render('_formProcess', [
-                    'model' => $model
-                ]);
-            }
-        }
-        ?>
+  <?php
+  if (Yii::$app->user->can('staffMaterial')) {
+  if ($model->status == 1) {
+  echo $this->render('_formProcess', [
+  'model' => $model
+  ]);
+  }
+  } */
+?>

@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel culturePnPsu\repair\models\RepairStaffSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('repair', 'รายการซ่อมทั้งหมด');
+$this->title = Yii::t('repair', 'รายการแจ้งซ่อมทั้งหมด');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -65,6 +65,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'attribute' => 'inform_at',
                                         'format' => 'datetime',
                                     //'filter' => common\models\User::getListUser(),
+                                    ],
+                                    [
+                                        'content' => function($model) {
+                                            return Html::a('รับเรื่อง',['assign','id'=>$model->id],['class'=>'btn btn-primary']);
+                                        },
                                     ],
                                 //['class' => 'yii\grid\ActionColumn'],
                                 ],
